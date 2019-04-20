@@ -1,0 +1,39 @@
+#import os module
+import os
+
+#Returns the current working directory
+#https://www.pythonforbeginners.com/os/pythons-os-module
+os.getcwd()
+
+
+#import file path
+#https://stackabuse.com/read-a-file-line-by-line-in-python/
+#putting r in front of the file path converts from normal string to raw string
+#https://stackoverflow.com/questions/37400974/unicode-error-unicodeescape-codec-cant-decode-bytes-in-position-2-3-trunca
+importfilepath = r"folderpath\filename.fileextension"
+
+#iteratively read line by line and print out
+with open(importfilepath) as fp:  
+   line = fp.readline()
+   cnt = 1
+   while line:
+       print("Line {}: {}".format(cnt, line.strip()))
+       line = fp.readline()
+       cnt += 1
+
+
+#initialise empty list
+fileforanalysis = []
+
+#https://stackoverflow.com/questions/3277503/how-to-read-a-file-line-by-line-into-a-list
+with open(importfilepath) as fp:
+    content = fp.readlines()
+    # you may also want to remove whitespace characters like `\n` at the end of each line
+    content = [x.strip() for x in content]
+    
+#close the connection to the import file path once you are done with reading the file in the content variable.
+#otherwise your pc continues to maintain that connection and lag
+fp.close()
+
+#check the content of what you imported
+content
